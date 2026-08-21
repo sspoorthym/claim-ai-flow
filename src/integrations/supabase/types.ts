@@ -14,7 +14,171 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      customers: {
+        Row: {
+          amount: number
+          created_at: string
+          email: string
+          id: string
+          name: string
+          risk: string
+          status: string
+        }
+        Insert: {
+          amount?: number
+          created_at?: string
+          email: string
+          id?: string
+          name: string
+          risk?: string
+          status?: string
+        }
+        Update: {
+          amount?: number
+          created_at?: string
+          email?: string
+          id?: string
+          name?: string
+          risk?: string
+          status?: string
+        }
+        Relationships: []
+      }
+      notifications: {
+        Row: {
+          created_at: string
+          id: string
+          message: string
+          read: boolean
+          title: string
+          type: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          message: string
+          read?: boolean
+          title: string
+          type?: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          message?: string
+          read?: boolean
+          title?: string
+          type?: string
+        }
+        Relationships: []
+      }
+      payments: {
+        Row: {
+          amount: number
+          customer_id: string
+          failure_reason: string | null
+          id: string
+          payment_date: string
+          payment_method: string
+          payment_status: string
+        }
+        Insert: {
+          amount?: number
+          customer_id: string
+          failure_reason?: string | null
+          id?: string
+          payment_date?: string
+          payment_method?: string
+          payment_status?: string
+        }
+        Update: {
+          amount?: number
+          customer_id?: string
+          failure_reason?: string | null
+          id?: string
+          payment_date?: string
+          payment_method?: string
+          payment_status?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "payments_customer_id_fkey"
+            columns: ["customer_id"]
+            isOneToOne: false
+            referencedRelation: "customers"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      recovery_actions: {
+        Row: {
+          action_type: string
+          amount_recovered: number
+          created_at: string
+          customer_id: string
+          id: string
+          status: string
+        }
+        Insert: {
+          action_type: string
+          amount_recovered?: number
+          created_at?: string
+          customer_id: string
+          id?: string
+          status?: string
+        }
+        Update: {
+          action_type?: string
+          amount_recovered?: number
+          created_at?: string
+          customer_id?: string
+          id?: string
+          status?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "recovery_actions_customer_id_fkey"
+            columns: ["customer_id"]
+            isOneToOne: false
+            referencedRelation: "customers"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      risk_scores: {
+        Row: {
+          created_at: string
+          customer_id: string
+          id: string
+          reason: string | null
+          risk_level: string
+          risk_score: number
+        }
+        Insert: {
+          created_at?: string
+          customer_id: string
+          id?: string
+          reason?: string | null
+          risk_level?: string
+          risk_score?: number
+        }
+        Update: {
+          created_at?: string
+          customer_id?: string
+          id?: string
+          reason?: string | null
+          risk_level?: string
+          risk_score?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "risk_scores_customer_id_fkey"
+            columns: ["customer_id"]
+            isOneToOne: false
+            referencedRelation: "customers"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
