@@ -35,7 +35,7 @@ export function MetricCard({
   } as const;
 
   return (
-    <Card className="shadow-[var(--shadow-card)]">
+    <Card className="gap-0 py-0 shadow-[var(--shadow-card)]">
       <CardContent className="flex items-start justify-between gap-3 p-5">
         <div className="min-w-0">
           <p className="text-sm text-muted-foreground">{label}</p>
@@ -137,7 +137,7 @@ export function SectionCard({
   children: ReactNode;
 }) {
   return (
-    <Card className="shadow-[var(--shadow-card)]">
+    <Card className="gap-0 py-0 shadow-[var(--shadow-card)]">
       <CardContent className="p-5">
         <div className="mb-4 flex items-start justify-between gap-3">
           <div>
