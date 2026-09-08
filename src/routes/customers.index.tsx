@@ -68,7 +68,9 @@ function CustomersPage() {
   const [search, setSearch] = useState("");
   const [status, setStatus] = useState("all");
   const [risk, setRisk] = useState("all");
-  const [dialog, setDialog] = useState<{ open: boolean; editing?: Customer }>({ open: false });
+  const [dialog, setDialog] = useState<{ open: boolean; editing?: Customer | undefined }>({
+    open: false,
+  });
   const [form, setForm] = useState<CustomerInput>(EMPTY);
 
   const query = useQuery({ queryKey: ["customers"], queryFn: getCustomers, retry: false });
